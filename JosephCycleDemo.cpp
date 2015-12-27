@@ -75,9 +75,14 @@ void run( int total, int m )
 // argc为4, argv是有4个char*元素的数组
 void parseArgs( int argc, char** argv )
 {
-    for( char** p = argv; p < argv + argc; p++ )
+    // for( char** p = argv; p < argv + argc; p++ )
+    // {
+    //     printf("%s\n", *p);
+    // }
+
+    while ( *++argv != NULL )
     {
-        printf("%s\n", *p);
+        printf("%s\n", *argv);
     }
 }
 
