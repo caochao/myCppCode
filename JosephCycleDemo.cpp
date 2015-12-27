@@ -70,26 +70,9 @@ void run( int total, int m )
     }
 }
 
-// JosephCycleDemo.exe -o -c test
-// JosephCycleDemo -o -c test
-// argc为4, argv是有4个char*元素的数组
-void parseArgs( int argc, char** argv )
-{
-    // for( char** p = argv; p < argv + argc; p++ )
-    // {
-    //     printf("%s\n", *p);
-    // }
-
-    while ( *++argv != NULL )
-    {
-        printf("%s\n", *argv);
-    }
-}
-
 int main( int argc, char** argv )
 {
     run( 5, 5 );
-    parseArgs( argc, argv );
 
     scanf( "press any key to quit..." );
     return 0;
