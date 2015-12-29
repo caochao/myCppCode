@@ -26,8 +26,32 @@ void printLinkList( Node* linkList )
 	printf("\n------------------------\n");
 }
 
+// 反转链表
+// @param linkList 链表头结点
+Node* listReverse( Node* linkList )
+{
+	if ( linkList == NULL )
+	{
+		return NULL;
+	}
+	Node *prev;
+	Node *curr = linkList;
+	Node *next = curr->link;
+	while ( curr != NULL )
+	{
+		curr->link = prev;
+		prev = curr;
+		curr = next;
+		if ( next != NULL )
+		{
+			next = next->link;
+		}
+	}
+	return prev;
+}
+
 // 在链表中搜索值为value的节点
-void listSearch( Node* linkList, int value )
+Node* listSearch( Node* linkList, int value )
 {
 	while ( linkList != NULL && linkList->value != value )
 	{
@@ -159,6 +183,13 @@ int main()
 	listInsert( &linkList, 3 );
 	listInsert( &linkList, -1 );
 	listInsert( &linkList, 4 );
+	printLinkList( linkList );
+
+	// reverse
+	Node* reversed = listReverse( linkList );
+	printLinkList( reversed );
+
+	linkList = listReverse( reversed );
 	printLinkList( linkList );
 
 	// remove
