@@ -2,8 +2,21 @@
 #include <stdio.h>
 #include <string.h>
 
-#define max( a, b ) ( ( a ) > ( b ) ? ( a ) : ( b ) )
-#define min( a, b ) ( ( a ) > ( b ) ? ( b ) : ( a ) )
+// #define max( a, b ) ( ( a ) > ( b ) ? ( a ) : ( b ) )
+// #define min( a, b ) ( ( a ) > ( b ) ? ( b ) : ( a ) )
+
+
+template<class Type>
+inline Type min( Type t1, Type t2 )
+{
+	t1 < t2 ? t1 : t2;
+}
+
+template<typename Type>
+inline Type max( Type t1, Type t2 )
+{
+	t1 > t2 ? t1 : t2;
+}
 
 // 截取srcStr从start位置开始, 长度为len的子串
 char* substr( const char* srcStr, int start, int len )
@@ -57,26 +70,26 @@ char* substring( const char* srcStr, int start, int end )
 	return destStr;
 }
 
-// int main()
-// {
-// 	char* str = "cao,hi";
+int main()
+{
+	char* str = "cao,hi";
 
-// 	// test substr
-// 	char* s = substr( str, 1, -3 );
-// 	if ( s != NULL )
-// 	{
-// 		printf("%s, %d\n", s, strlen( s ) );
-// 		free( s );
-// 	}
+	// test substr
+	char* s = substr( str, 1, -3 );
+	if ( s != NULL )
+	{
+		printf("%s, %d\n", s, strlen( s ) );
+		free( s );
+	}
 
-// 	// test substring
-// 	char* s2 = substring( str, 1, 0 );
-// 	if ( s2 != NULL )
-// 	{
-// 		printf("%s, %d\n", s2, strlen( s2 ) );
-// 		free( s2 );	
-// 	}
+	// test substring
+	char* s2 = substring( str, 1, 0 );
+	if ( s2 != NULL )
+	{
+		printf("%s, %d\n", s2, strlen( s2 ) );
+		free( s2 );	
+	}
 
-// 	scanf( "press any key to quit..." );
-// 	return 0;
-// }
+	scanf( "press any key to quit..." );
+	return 0;
+}
