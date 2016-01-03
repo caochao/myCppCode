@@ -2,6 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define PRINT( FORMAT, VALUE ) \
+		printf("the value of " #VALUE " is " FORMAT "\n", VALUE);
+
+#ifndef DEBUG
+//#if !defined(DEBUG)
+#define DEBUG 1
+#endif
+
+
 // 将10进制数字转换为指定的进制字符串
 void int2binary( int value, int radix )
 {
@@ -38,6 +47,7 @@ int main( int argc, char** argv )
     //int2binary( 11, 16 );
     //int2binary( 11, 2 );
     int2binary( 11, 10 );
+    PRINT("%s","caochao")
 
     scanf( "press any key to quit..." );
     return 0;
