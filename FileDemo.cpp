@@ -7,6 +7,7 @@
 // 如果值小于实际行长度, 不会影响程序结果, 因为fgets会从下个字节继续读
 #define MAX_LINE_LENGTH 1024
 
+// 字符串方式逐行复制
 void copyLines( FILE* input, FILE* output )
 {
 	char buffer[MAX_LINE_LENGTH];
@@ -15,6 +16,20 @@ void copyLines( FILE* input, FILE* output )
 	while ( fgets( buffer, MAX_LINE_LENGTH, input ) != NULL )
 	{
 		fputs( buffer, output );
+	}
+}
+
+// 以二进制方式复制
+void copyBins( FILE* input, FILE* output )
+{
+	const int BUFFER_SIZE = 1024;
+	char buffer[BUFFER_SIZE];
+	int count;
+
+	// 读取到文件尾时, fread返回0
+	while ( ( count = fread( buffer, sizeof( char ), BUFFER_SIZE, input ) ) != 0 )
+	{
+		fwrite( buffer, sizeof( char ), count, output );
 	}
 }
 
@@ -38,6 +53,9 @@ void copyFiles( char* srcFile, char* destFile )
 
 	// 逐行复制
 	copyLines( input, output );
+
+	// 二进制复制
+	//copyBins( input, output );
 
 	// 关闭文件流
 	int ifc = fclose( input );
@@ -72,8 +90,9 @@ int read_int()
 
 int main()
 {
-	printf( "FOPEN_MAX=%d\n", FOPEN_MAX );
+	printf( "FOPEN_MAX=%-6d\n", FOPEN_MAX );
 	printf( "FILENAME_MAX=%d\n", FILENAME_MAX );
+	printf("BUFSIZ=%d\n", BUFSIZ);
 
 	copyFiles( "E:\\code\\cplus\\test.cpp", "E:\\code\\cplus\\test2.cpp" );
 
