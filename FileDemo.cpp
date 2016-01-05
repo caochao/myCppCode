@@ -73,6 +73,42 @@ void copyFiles( char* srcFile, char* destFile )
 	}
 }
 
+// 注意. 操作系统换行符的差异导致在文本流中不能根据实际写入字符数的计算结果定位到文本流的一个位置
+// 但ftell()返回的偏移量处理了这种差异, 所以在文本流中只能使用ftell配合fseek使用
+void append2TxtStream( char* fileName, char* txt )
+{
+	// 以写入文本方式打开
+	FILE* txtStream = fopen( fileName, "a" );
+	if ( txtStream == NULL )
+	{
+		perror( fileName );
+		exit( EXIT_FAILURE );
+	}
+
+	// 定位并写入
+	long end = ftell( txtStream );
+	fseek( txtStream, end, SEEK_SET );
+	fputs( txt, txtStream );
+
+	// 关闭文件流
+	int fc = fclose( txtStream );
+	if ( fc != 0 )
+	{
+		perror( "fclose" );
+		exit( EXIT_FAILURE );
+	}
+}
+
+void testTmpName()
+{
+	char buffer[L_tmpnam];
+	tmpnam( buffer );
+	printf("buffer=%s\n", buffer);
+
+	char* ptr = tmpnam( NULL );
+	printf("ptr=%s\n", ptr);
+}
+
 int read_int()
 {
 	int ch, value = 0;
@@ -95,6 +131,10 @@ int main()
 	printf("BUFSIZ=%d\n", BUFSIZ);
 
 	copyFiles( "E:\\code\\cplus\\test.cpp", "E:\\code\\cplus\\test2.cpp" );
+
+	append2TxtStream( "E:\\code\\cplus\\test2.cpp", "//test append2TxtStream" );
+
+	testTmpName();
 
 	//printf("read_int=%d\n", read_int());
 
