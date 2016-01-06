@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #include <ctype.h>
 
 // 行长度必须>=2, 因为要预留一个字节放NUL字符
@@ -27,7 +26,7 @@ void copyBins( FILE* input, FILE* output )
 	int count;
 
 	// 读取到文件尾时, fread返回0
-	while ( ( count = fread( buffer, sizeof( char ), BUFFER_SIZE, input ) ) != 0 )
+	while ( ( count = fread( buffer, sizeof( char ), BUFFER_SIZE, input ) ) > 0 )
 	{
 		fwrite( buffer, sizeof( char ), count, output );
 	}
