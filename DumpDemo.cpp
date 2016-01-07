@@ -3,7 +3,7 @@
 #include <memory.h>
 #include <ctype.h>
 
-#define BUFFER_SIZE 65			// 63个字符+NUL结尾符+\n换行符
+#define BUFFER_SIZE 65			// 63个字符+\n换行符+NUL结尾符
 #define BIN_SIZE 16				// 16个字符
 
 // dump一个文本, 表示stream的16进制内容
@@ -43,11 +43,11 @@ void dump( FILE *input, FILE *output )
 			// 每1字节数据表示为2位宽度的16进制字符串
 			sprintf( hex_ptr, "%02X", data[i] );
 			hex_ptr += 2;
-			*hex_ptr = ' ';
 
-			// 4个字节一组
+			// 4个字节一组, 每组以空格隔开
 			if ( i % 4 == 3 )
 			{
+				*hex_ptr = ' ';
 				hex_ptr++;
 			}
 
@@ -63,6 +63,7 @@ void dump( FILE *input, FILE *output )
 		}
 
 		// 将行写入输出流, 并更新offset
+		// 注意fputs第一个字符串参数必须以NUL结尾
 		fputs( buffer, output );
 
 		offset += len;
