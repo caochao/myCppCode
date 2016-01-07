@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 // 在有序数组中, 找出出现次数最频繁的元素
 // 如果有多个值出现的次数相同,则返回先出现的值
