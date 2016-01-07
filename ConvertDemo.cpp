@@ -34,7 +34,14 @@ int my_atoi( const char *str )
 		num = num * 10 + ( *str - '0' );
 		str++;
 	}
-	return minus * num;
+	num *= minus;
+
+	// 是否溢出int范围
+    if( num > 0x7fffffff || num < ( signed int )0x80000000 )  
+    {
+    	return 0;
+    }
+    return num;
 }
 
 int main(int argc, char const **argv )
