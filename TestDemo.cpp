@@ -39,11 +39,25 @@ int mostFre( const int (&array)[6], int start, int end )
 	return maxOccuElem;
 }
 
+void testTime()
+{
+	const time_t t = time(NULL);
+	struct tm *t2 = localtime( &t );
+
+	const int TIME_STR_SIZE = 100;
+	char timeStr[TIME_STR_SIZE];
+	size_t timeSize = strftime( timeStr, TIME_STR_SIZE, "今天是%Y-%m-%d, 星期%w, 现在时间是%H:%M:%S", t2 );
+
+	printf( "timeSize=%d, timeStr=%s\n", timeSize, timeStr );
+}
+
 int main()
 {
 	int a[6] = { 1, 1, 1, 1, 1, 1 };
 	int ret = mostFre( a, 0, 6 );
 	printf("the mostFre elem is:%d\n", ret);
+
+	testTime();
 
 	scanf( "press any key to quit..." );
 	return 0;
