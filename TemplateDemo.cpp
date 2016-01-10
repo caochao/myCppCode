@@ -60,6 +60,18 @@ float func( float (*method)(RAF), RAF arg )
 	return method(arg);
 }
 
+template < typename T1, typename T2, typename T3 >
+T1 testFunc( T2 a, T3 b )
+{
+
+}
+
+template < typename T >
+int compare( const T& v1, const T& v2 )
+{
+
+}
+
 int main()
 {
 	// int
@@ -89,6 +101,18 @@ int main()
 	int sorted_ia[9] = { 1, 1, 1, 2, 2, 3, 4, 4, 5 };
 	int* iborder = sortedArrayUnique( sorted_ia, sorted_ia, sorted_ia + 9 );
 	printArray( sorted_ia, sorted_ia, iborder, "%d->" );
+
+	// 第1个显示模板实参推断T1, 函数实参推断模板实参
+	testFunc<float>( 1, 2 );
+
+	// 使用显示模板实参, 函数参数会自动转化, 例如short转化为int
+	// 不使用显示模板实参, 函数参数不会自动转化. 但可以强制类型转化
+	int a = 1;
+	short b = 2;
+	compare<short>( a, b );
+	compare<int>( a, b );
+	compare( static_cast<short>(a), b );
+	compare( a, static_cast<int>(b) );
 
 	scanf( "press any key to quit..." );
 	return 0;
