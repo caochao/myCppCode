@@ -45,6 +45,9 @@ int main()
 	int ret = mostFre( a, 0, 6 );
 	printf("the mostFre elem is:%d\n", ret);
 
+	clock_t t = clock();
+	printf("t=%ld. cps=%d\n", t, CLOCKS_PER_SEC );
+
 	scanf( "press any key to quit..." );
 	return 0;
 }
