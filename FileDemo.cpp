@@ -11,7 +11,7 @@ void copyLines( FILE* input, FILE* output )
 {
 	char buffer[MAX_LINE_LENGTH];
 
-	// 读取到EOF(-1)时, fgets返回NULL, 否则返回buffer地址
+	// 读取到EOF(值为-1)时, fgets返回NULL, 否则返回buffer地址
 	while ( fgets( buffer, MAX_LINE_LENGTH, input ) != NULL )
 	{
 		fputs( buffer, output );
