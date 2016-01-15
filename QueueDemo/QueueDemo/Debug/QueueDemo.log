@@ -1,0 +1,38 @@
+﻿Build started 2016/1/15 18:06:54.
+     1>Project "E:\code\cplus\QueueDemo\QueueDemo\QueueDemo.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         F:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt TQueue.cpp TQueueDemo.cpp
+         TQueueDemo.cpp
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.hpp(53): error C2143: syntax error : missing ';' before 'const'
+                 e:\code\cplus\queuedemo\queuedemo\tqueue.hpp(64) : see reference to class template instantiation 'TQueue<T>' being compiled
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.hpp(53): error C2365: 'TQueue<T>::front' : redefinition; previous definition was 'member function'
+                 e:\code\cplus\queuedemo\queuedemo\tqueue.hpp(52) : see declaration of 'TQueue<T>::front'
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.hpp(53): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.hpp(53): error C2059: syntax error : '{'
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.hpp(53): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.hpp(63): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+         TQueue.cpp
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(3): error C2143: syntax error : missing ';' before '<'
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(3): error C2182: 'TQueue' : illegal use of type 'void'
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(3): error C2988: unrecognizable template declaration/definition
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(3): error C2059: syntax error : '<'
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(3): error C2039: 'destroy' : is not a member of '`global namespace''
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(12): error C2039: 'pop' : is not a member of '`global namespace''
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(13): error C2143: syntax error : missing ';' before '{'
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(13): error C2447: '{' : missing function header (old-style formal list?)
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(21): error C2143: syntax error : missing ';' before '<'
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(21): error C2182: 'TQueue' : illegal use of type 'void'
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(21): error C2086: 'int TQueue' : redefinition
+                 e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(3) : see declaration of 'TQueue'
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(21): error C2988: unrecognizable template declaration/definition
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(21): error C2059: syntax error : '<'
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(21): error C2039: 'push' : is not a member of '`global namespace''
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(34): error C2039: 'copy_elems' : is not a member of '`global namespace''
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(35): error C2143: syntax error : missing ';' before '{'
+     1>e:\code\cplus\queuedemo\queuedemo\tqueue.cpp(35): error C2447: '{' : missing function header (old-style formal list?)
+         Generating Code...
+     1>Done Building Project "E:\code\cplus\QueueDemo\QueueDemo\QueueDemo.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.71
