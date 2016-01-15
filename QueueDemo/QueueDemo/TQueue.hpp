@@ -1,9 +1,9 @@
-#ifndef TQUEUE_H
+ï»¿#ifndef TQUEUE_H
 #define TQUEUE_H
 #include <fstream>
 using namespace std;
 
-// ·ºĞÍ¶ÓÁĞÀà
+// æ³›å‹é˜Ÿåˆ—ç±»
 // author:c++ primer
 // editor:cc
 
@@ -13,11 +13,11 @@ template < class T > ostream& operator<<( ostream&, const TQueue<T>& );
 // class TQueueItem
 template < class Type > class TQueueItem
 {
-	// ÓÑÔªÉùÃ÷
+	// å‹å…ƒå£°æ˜
 	friend class TQueue<Type>;
 	friend ostream& operator<<<Type>( ostream&, const TQueue<Type>& );
 
-	// Ë½ÓĞ³ÉÔ±
+	// ç§æœ‰æˆå‘˜
 	TQueueItem( const Type &t ): item(t), next(0) {}
 	Type item;
 	TQueueItem *next;
@@ -26,43 +26,42 @@ template < class Type > class TQueueItem
 // class TQueue
 template < class Type > class TQueue
 {
-	// ÓÑÔªÉùÃ÷
+	// å‹å…ƒå£°æ˜
 	friend ostream& operator<<<Type>( ostream&, const TQueue<Type>& );
 
 public:
-	// ¹¹Ôìº¯Êı, ¿Õ¶ÓÁĞ
+	// æ„é€ å‡½æ•°, ç©ºé˜Ÿåˆ—
 	TQueue(): head(0), tail(0) {}
 
-	// ´ÓÒ»¶Ôµü´úÆ÷Ö¸¶¨µÄÈİÆ÷·¶Î§ÄÚ´´½¨¶ÓÁĞ
+	// ä»ä¸€å¯¹è¿­ä»£å™¨æŒ‡å®šçš„å®¹å™¨èŒƒå›´å†…åˆ›å»ºé˜Ÿåˆ—
 	template < class It >
 	TQueue( It beg, It end ): head(0), tail(0) { copy_elems( beg, end ); }
 
-	// ¸´ÖÆ¹¹Ôìº¯Êı
+	// å¤åˆ¶æ„é€ å‡½æ•°
 	TQueue( const TQueue &q ): head(0), tail(0) { copy_elems(q); }
 
-	// ÉùÃ÷ÖØÔØ¸³Öµ²Ù×÷·û
+	// å£°æ˜é‡è½½èµ‹å€¼æ“ä½œç¬¦
 	TQueue& operator=( const TQueue& );
 
 	~TQueue() { destroy(); }
 
-	// º¯ÊıÄ£°åÉùÃ÷. ÓÃÒ»¶Ôµü´úÆ÷Ö¸¶¨µÄ·¶Î§ÄÚµÄÄÚÈİÌæ»»µ±Ç°¶ÓÁĞ
+	// å‡½æ•°æ¨¡æ¿å£°æ˜. ç”¨ä¸€å¯¹è¿­ä»£å™¨æŒ‡å®šçš„èŒƒå›´å†…çš„å†…å®¹æ›¿æ¢å½“å‰é˜Ÿåˆ—
 	template < class Iter > void assign( Iter, Iter );
 
-	// ·µ»Ø¶ÓÁĞÍ·µÄÔªËØ. Î´¼ì²é¿Õ¶ÓÁĞ
+	// è¿”å›é˜Ÿåˆ—å¤´çš„å…ƒç´ . æœªæ£€æŸ¥ç©ºé˜Ÿåˆ—
 	Type& front() { return head->item; }
-	const Type& front const { return head->item; }
 	void push( const Type& );
 	void pop();
 	bool empty() const { return head == 0; }
 private:
-	TQueueItem<Type> *head;		// Ö¸Ïò¶ÓÁĞµÚÒ»¸öTQueueItem<Type>
-	TQueueItem<Type> *tail;		// Ö¸Ïò¶ÓÁĞµÚºóÒ»¸öTQueueItem<Type>
+	TQueueItem<Type> *head;		// æŒ‡å‘é˜Ÿåˆ—ç¬¬ä¸€ä¸ªTQueueItem<Type>
+	TQueueItem<Type> *tail;		// æŒ‡å‘é˜Ÿåˆ—ç¬¬åä¸€ä¸ªTQueueItem<Type>
 
 	void destroy();
 	void copy_elems( const TQueue& );
-	template < class Iter > copy_elems( Iter, Iter );
+	template < class Iter > void copy_elems( Iter, Iter );
 };
 
-#include "TQueue.cpp"		// ÒıÈëÄ£°åÊµÏÖÎÄ¼ş
+#include "TQueue.cpp"		// å¼•å…¥æ¨¡æ¿å®ç°æ–‡ä»¶
 
 #endif

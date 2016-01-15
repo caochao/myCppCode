@@ -1,4 +1,23 @@
-// ¶¨ÒåTQueue³ÉÔ±º¯Êı
+ï»¿// å®šä¹‰é‡è½½çš„æ³›å‹è¾“å‡ºæ“ä½œç¬¦
+template < class Type > ostream& operator<<( ostream& os, const TQueue<Type>& q )
+{
+	os << "<";
+	for ( TQueueItem<Type> *p = q.head; p; p = p->next )
+	{
+		os << p->item << " ";
+	}
+	os << ">";
+	return os;
+}
+
+// å®šä¹‰TQueueæˆå‘˜å‡½æ•°
+template < class Type > 
+TQueue<Type>& TQueue<Type>::operator=( const TQueue& q )
+{
+	head = tail = 0;
+	copy_elems( q );
+	return *this;
+}
 
 template < class Type > void TQueue<Type>::destroy()
 {
@@ -8,7 +27,7 @@ template < class Type > void TQueue<Type>::destroy()
 	}
 }
 
-// µ¯³ö¶ÓÁĞÍ·ÔªËØ
+// å¼¹å‡ºé˜Ÿåˆ—å¤´å…ƒç´ 
 template < class Type > void TQueue<Type>::pop()
 {
 	if ( empty() ) return;
@@ -17,7 +36,7 @@ template < class Type > void TQueue<Type>::pop()
 	delete p;
 }
 
-// ¶ÓÎ²Ìí¼ÓÔªËØ
+// é˜Ÿå°¾æ·»åŠ å…ƒç´ 
 template < class Type > void TQueue<Type>::push( const Type& val )
 {
 	TQueueItem<Type> *item = new TQueueItem<Type>( val );
@@ -30,11 +49,29 @@ template < class Type > void TQueue<Type>::push( const Type& val )
 	tail = item;
 }
 
-// ´Ó¶ÓÁĞq¸´ÖÆÔªËØµ½µ±Ç°¶ÓÁĞ
+// ä»é˜Ÿåˆ—qå¤åˆ¶å…ƒç´ åˆ°å½“å‰é˜Ÿåˆ—
 template < class Type > void TQueue<Type>::copy_elems( const TQueue& q )
 {
 	for ( TQueueItem<Type> *pt = q.head; pt; pt = pt->next )
 	{
 		push( pt->item );
+	}
+}
+
+// å®šä¹‰æˆå‘˜æ¨¡æ¿
+template < class Type > template < class Iter > 
+void TQueue<Type>::assign( Iter beg, Iter end )
+{
+	destroy();
+	copy_elems( beg, end );
+}
+
+template < class Type > template < class Iter > 
+void TQueue<Type>::copy_elems( Iter beg, Iter end )
+{
+	while ( beg != end )
+	{
+		push( *beg );
+		++beg;
 	}
 }
