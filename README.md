@@ -1,3 +1,3 @@
 # myCppCode
 cpp on the road
-when i read <<c and poiter>>, <<c++ primer>>, i write this code
+when i read <pointer on c>, <c++ primer>, i write this code
