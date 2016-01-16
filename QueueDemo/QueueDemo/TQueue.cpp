@@ -1,7 +1,7 @@
 ﻿// 定义重载的泛型输出操作符
 template < class Type > ostream& operator<<( ostream& os, const TQueue<Type>& q )
 {
-	os << "<";
+	os << "< ";
 	for ( TQueueItem<Type> *p = q.head; p; p = p->next )
 	{
 		os << p->item << " ";
@@ -40,7 +40,7 @@ template < class Type > void TQueue<Type>::pop()
 template < class Type > void TQueue<Type>::push( const Type& val )
 {
 	TQueueItem<Type> *item = new TQueueItem<Type>( val );
-	if ( empty() == 0 )
+	if ( empty() )
 	{
 		head = tail = item;
 		return;
