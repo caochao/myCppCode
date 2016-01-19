@@ -30,7 +30,7 @@ template < class Type > class TQueue
 	friend ostream& operator<<<Type>( ostream&, const TQueue<Type>& );
 
 public:
-	// 构造函数, 空队列
+	// 默认构造函数, 空队列. 声明TQueue<float> q时会调用此构造函数
 	TQueue(): head(0), tail(0) {}
 
 	// 从一对迭代器指定的容器范围内创建队列
