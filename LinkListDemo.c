@@ -28,24 +28,35 @@ void printLinkList( Node* linkList )
 
 // 反转链表
 // @param linkList 链表头结点
-Node* listReverse( Node* linkList )
+Node* listReverse( Node *head )
 {
-	if ( linkList == NULL )
+	if ( !head ) return NULL;
+	if ( !head->link ) return head;
+
+	// Node *prev = NULL;
+	// Node* curr = head;
+	// Node* next = curr->link;
+
+	// while ( next )
+	// {
+	// 	curr->link = prev;
+	// 	prev = curr;
+	// 	curr = next;
+	// 	next = next->link;
+	// }
+	// curr->link = prev;
+	// return curr;
+
+	// 对比体会上下两种写法的区别
+	Node *prev, *next = NULL;
+	Node* curr = head;
+
+	while ( curr )
 	{
-		return NULL;
-	}
-	Node *prev;
-	Node *curr = linkList;
-	Node *next = curr->link;
-	while ( curr != NULL )
-	{
+		next = curr->link;
 		curr->link = prev;
 		prev = curr;
 		curr = next;
-		if ( next != NULL )
-		{
-			next = next->link;
-		}
 	}
 	return prev;
 }
