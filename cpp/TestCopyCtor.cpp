@@ -3,28 +3,32 @@
 using namespace std;
 
 // 自定义复制构造函数
+// 如果类没有指针成员, 或复制构造/赋值时不需要做特殊的工作, 则合成的复制构造/赋值操作一样可以工作得很好
 class Foo
 {
 public:
 	Foo(): ival(0), sval( "empty" ) { cout << "Foo()" << endl; }
 	Foo( int i ): ival(i), sval( "empty" ) { cout << "Foo( int i )" << endl; }
-	Foo( const Foo& );		// 似乎这里的explicit
+	Foo( const Foo& );
 	Foo& operator=( const Foo& );
 private:
 	int ival;
 	string sval;
 };
 
+// 自定义的复制构造函数做的工作与合成的复制构造函数做的工作一模一样
 Foo::Foo( const Foo& rhs ): ival( rhs.ival ), sval( rhs.sval )
 {
 	cout << "Foo( const Foo& rhs )" << endl;
 }
 
+// 自定义的赋值操作符做的工作与合成的赋值操作符做的工作一模一样
 Foo& Foo::operator=( const Foo& rhs )
 {
 	ival = rhs.ival;
 	sval = rhs.sval;
 	cout << "Foo& operator=( const Foo& rhs )" << endl;
+	return *this;
 }
 
 int main()
